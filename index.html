@@ -28,11 +28,6 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =========================
-   BACKGROUND
-========================= */
-
 body::before {
     content: "";
     position: fixed;
@@ -75,9 +70,7 @@ body::after {
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 nav {
     position: fixed;
@@ -133,10 +126,7 @@ nav {
 .logo img {
     width: 100%;
     height: 100%;
-
     object-fit: contain;
-
-    border-radius: 8px;
 }
 
 .nav-links {
@@ -148,9 +138,7 @@ nav {
 .nav-links a {
     color: #89929b;
     text-decoration: none;
-
     font-size: 14px;
-
     transition: 0.2s;
 }
 
@@ -173,45 +161,34 @@ nav {
 }
 
 
-/* =========================
-   HERO / SHOWCASE
-========================= */
+/* HERO */
 
 .hero {
     min-height: 100vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding:
-        120px 7% 80px;
-}
-
-.hero-showcase {
-    width: 100%;
-    max-width: 1150px;
-
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        minmax(0, 1fr)
+        minmax(380px, 1fr);
 
     align-items: center;
 
-    gap: 80px;
+    gap: 70px;
+
+    padding:
+        120px 7% 80px;
+
+    max-width: 1400px;
+
+    margin: auto;
 }
 
-
-/* =========================
-   HERO TEXT
-========================= */
-
-.hero-text {
-    max-width: 560px;
+.hero-content {
+    max-width: 650px;
 }
 
-.hero-text h1 {
+.hero h1 {
     font-size:
         clamp(60px, 9vw, 105px);
 
@@ -222,26 +199,26 @@ nav {
     font-weight: 600;
 }
 
-.hero-text h1 span {
+.hero h1 span {
     color: #6ec8ff;
 
     text-shadow:
         0 0 45px rgba(110, 200, 255, 0.25);
 }
 
-.hero-text p {
+.hero p {
     margin-top: 30px;
+
+    max-width: 600px;
 
     color: #89929b;
 
     font-size: 18px;
 
     line-height: 1.7;
-
-    max-width: 520px;
 }
 
-.hero-buttons {
+.buttons {
     display: flex;
 
     gap: 12px;
@@ -252,27 +229,33 @@ nav {
 }
 
 
-/* =========================
-   SHOWCASE CARD
-========================= */
+/* CLICKABLE SHOWCASE */
 
-.hero-preview {
-    min-height: 560px;
+.showcase-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.showcase-box {
+    position: relative;
+
+    width: 100%;
+    height: 470px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    position: relative;
+    overflow: hidden;
 
-    border-radius: 22px;
+    border-radius: 24px;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(110, 200, 255, 0.12),
+            135deg,
+            rgba(110, 200, 255, 0.10),
             rgba(110, 200, 255, 0.025)
         );
 
@@ -280,180 +263,88 @@ nav {
         1px solid rgba(110, 200, 255, 0.16);
 
     box-shadow:
-        0 30px 100px rgba(0,0,0,0.35);
+        0 30px 100px rgba(0, 0, 0, 0.35);
 
-    overflow: hidden;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
-.hero-preview::before {
-    content: "";
+.showcase-link:hover .showcase-box {
+    transform: translateY(-6px);
 
+    border-color:
+        rgba(110, 200, 255, 0.35);
+
+    box-shadow:
+        0 35px 100px
+        rgba(110, 200, 255, 0.12);
+}
+
+.showcase-glow {
     position: absolute;
 
-    width: 320px;
-    height: 320px;
+    width: 280px;
+    height: 280px;
 
     border-radius: 50%;
 
     background:
-        rgba(110, 200, 255, 0.14);
+        rgba(110, 200, 255, 0.18);
 
-    filter: blur(70px);
+    filter: blur(75px);
 }
 
-
-/* =========================
-   SHOWCASE PHONE
-========================= */
-
-.phone {
+.showcase-content {
     position: relative;
 
-    width: 245px;
-    height: 485px;
-
-    padding: 12px;
-
-    border-radius: 31px;
-
-    background: #05080b;
-
-    border:
-        5px solid #252d34;
-
-    box-shadow:
-        0 35px 80px rgba(0,0,0,0.65);
-
-    transform:
-        rotate(-4deg);
-
     z-index: 2;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
 }
 
-.phone-screen {
-    width: 100%;
-    height: 100%;
+.showcase-icon {
+    width: 150px;
+    height: 150px;
 
-    padding: 25px 18px;
+    object-fit: contain;
 
-    border-radius: 19px;
+    border-radius: 30px;
 
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 80% 15%,
-            rgba(110,200,255,0.35),
-            transparent 35%
-        ),
-        linear-gradient(
-            160deg,
-            #101b26,
-            #070b10
+    filter:
+        drop-shadow(
+            0 20px 35px
+            rgba(0, 0, 0, 0.45)
         );
 }
 
-.phone-logo {
-    width: 55px;
-    height: 55px;
-
-    margin-bottom: 25px;
-
-    border-radius: 13px;
-
-    overflow: hidden;
-
-    background:
-        rgba(110, 200, 255, 0.10);
-
-    border:
-        1px solid rgba(110, 200, 255, 0.2);
-}
-
-.phone-logo img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-}
-
-.phone-time {
-    font-size: 44px;
-
-    font-weight: 300;
-
-    letter-spacing: -2px;
-}
-
-.phone-date {
-    margin-top: 5px;
-
-    color: #75818b;
-
-    font-size: 11px;
-}
-
-.phone-line {
-    width: 100%;
-    height: 1px;
-
-    margin: 25px 0;
-
-    background:
-        rgba(110, 200, 255, 0.13);
-}
-
-.phone-label {
-    color: #6ec8ff;
-
-    font-size: 10px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 9px;
-}
-
-.phone-weather {
-    font-size: 25px;
-
-    font-weight: 300;
-}
-
-.tiles {
+.showcase-name {
     margin-top: 25px;
 
-    display: grid;
+    font-size: 38px;
 
-    grid-template-columns:
-        1fr 1fr;
+    font-weight: 500;
 
-    gap: 6px;
+    letter-spacing: -1px;
 }
 
-.tile {
-    height: 48px;
+.showcase-hint {
+    margin-top: 18px;
 
-    border-radius: 6px;
+    color: #6ec8ff;
 
-    background:
-        rgba(110, 200, 255, 0.12);
+    font-size: 13px;
 
-    border:
-        1px solid rgba(110, 200, 255, 0.12);
-
-    backdrop-filter: blur(5px);
-}
-
-.tile.large {
-    grid-column: span 2;
+    opacity: 0.8;
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTONS */
 
 .button {
     display: inline-block;
@@ -487,7 +378,7 @@ nav {
     transform: translateY(-2px);
 
     box-shadow:
-        0 0 45px rgba(110, 200, 255, 0.25);
+        0 0 45px rgba(110, 200, 255, 0.22);
 }
 
 .secondary {
@@ -506,13 +397,10 @@ nav {
 }
 
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 section {
-    padding:
-        110px 7%;
+    padding: 110px 7%;
 }
 
 .section-title {
@@ -551,57 +439,45 @@ section {
 }
 
 
-/* =========================
-   BOX-ONLY ANIMATION
-========================= */
+/* SCROLL ANIMATION */
 
 .reveal {
     opacity: 0;
 
-    transform:
-        translateX(-140px);
+    transform: translateX(-140px);
 
     transition:
         transform 0.75s
         cubic-bezier(0.22, 1, 0.36, 1),
-
         opacity 0.6s ease;
 
-    will-change:
-        transform,
-        opacity;
+    will-change: transform, opacity;
 }
 
 .reveal:nth-child(even) {
-    transform:
-        translateX(140px);
+    transform: translateX(140px);
 }
 
 .reveal.visible {
     opacity: 1;
 
-    transform:
-        translateX(0);
+    transform: translateX(0);
 }
 
 .reveal.exit-left {
     opacity: 0;
 
-    transform:
-        translateX(-180px);
+    transform: translateX(-180px);
 }
 
 .reveal.exit-right {
     opacity: 0;
 
-    transform:
-        translateX(180px);
+    transform: translateX(180px);
 }
 
 
-/* =========================
-   FEATURES
-========================= */
+/* FEATURES */
 
 .features {
     display: grid;
@@ -628,6 +504,17 @@ section {
         1px solid rgba(110, 200, 255, 0.11);
 
     border-radius: 11px;
+
+    transition:
+        transform 0.25s,
+        border-color 0.25s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(110, 200, 255, 0.27);
 }
 
 .feature-icon {
@@ -669,9 +556,7 @@ section {
 }
 
 
-/* =========================
-   RELEASES
-========================= */
+/* RELEASES */
 
 .releases {
     display: flex;
@@ -699,6 +584,14 @@ section {
         1px solid rgba(110, 200, 255, 0.10);
 }
 
+.release:hover {
+    background:
+        rgba(110, 200, 255, 0.07);
+
+    border-color:
+        rgba(110, 200, 255, 0.2);
+}
+
 .release-left {
     display: flex;
 
@@ -711,6 +604,8 @@ section {
     font-size: 24px;
 
     color: #6ec8ff;
+
+    font-weight: 500;
 }
 
 .latest {
@@ -742,15 +637,12 @@ section {
 }
 
 
-/* =========================
-   DOWNLOAD
-========================= */
+/* DOWNLOAD */
 
 .download {
     text-align: center;
 
     padding-top: 130px;
-
     padding-bottom: 150px;
 }
 
@@ -784,9 +676,7 @@ section {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     padding: 30px 7%;
@@ -804,9 +694,7 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 850px) {
 
@@ -814,24 +702,24 @@ footer {
         display: none;
     }
 
-    .hero-showcase {
+    .hero {
         grid-template-columns: 1fr;
 
         gap: 50px;
+
+        text-align: center;
     }
 
-    .hero-text {
-        text-align: center;
-
+    .hero-content {
         margin: auto;
     }
 
-    .hero-buttons {
+    .buttons {
         justify-content: center;
     }
 
-    .hero-preview {
-        min-height: 500px;
+    .showcase-box {
+        height: 400px;
     }
 
     .features {
@@ -853,20 +741,14 @@ footer {
 
         gap: 10px;
     }
-
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
-<!-- =========================
-     NAVIGATION
-========================= -->
 
 <nav>
 
@@ -911,111 +793,75 @@ footer {
 </nav>
 
 
-<!-- =========================
-     HERO SHOWCASE
-========================= -->
-
 <header class="hero">
 
-    <div class="hero-showcase">
 
+    <div class="hero-content">
 
-        <div class="hero-text">
+        <h1>
+            Cabb <span>UX</span>
+        </h1>
 
-            <h1>
-                Cabb <span>UX</span>
-            </h1>
+        <p>
+            A lightweight Android launcher built around
+            a clean, customizable and modern interface.
+        </p>
 
-            <p>
-                A lightweight Android launcher built around
-                a clean, customizable and modern interface.
-            </p>
+        <div class="buttons">
 
-            <div class="hero-buttons">
+            <a
+                href="Cabb_ux_1.9.apk"
+                class="button primary"
+                download
+            >
+                Download 1.9
+            </a>
 
-                <a
-                    href="Cabb_ux_1.9.apk"
-                    class="button primary"
-                    download
-                >
-                    Download 1.9.2.5
-                </a>
-
-                <a
-                    href="#features"
-                    class="button secondary"
-                >
-                    Explore
-                </a>
-
-            </div>
+            <a
+                href="#features"
+                class="button secondary"
+            >
+                Explore
+            </a>
 
         </div>
 
+    </div>
 
-        <!-- ACTUAL SHOWCASE -->
 
-        <div class="hero-preview reveal">
+    <a
+        href="showcase.html"
+        class="showcase-link"
+    >
 
-            <div class="phone">
+        <div class="showcase-box reveal">
 
-                <div class="phone-screen">
+            <div class="showcase-glow"></div>
 
-                    <div class="phone-logo">
+            <div class="showcase-content">
 
-                        <img
-                            src="cabbuxicon.png"
-                            alt="Cabb UX"
-                        >
+                <img
+                    src="cabbuxicon.png"
+                    class="showcase-icon"
+                    alt="Cabb UX"
+                >
 
-                    </div>
+                <div class="showcase-name">
+                    Cabb UX
+                </div>
 
-                    <div class="phone-time">
-                        18:00
-                    </div>
-
-                    <div class="phone-date">
-                        Cabb UX
-                    </div>
-
-                    <div class="phone-line"></div>
-
-                    <div class="phone-label">
-                        Weather
-                    </div>
-
-                    <div class="phone-weather">
-                        21°
-                    </div>
-
-                    <div class="tiles">
-
-                        <div class="tile large"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                    </div>
-
+                <div class="showcase-hint">
+                    View UI showcase →
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+    </a>
 
 </header>
 
-
-<!-- =========================
-     FEATURES
-========================= -->
 
 <section id="features">
 
@@ -1030,7 +876,8 @@ footer {
         </h2>
 
         <p>
-            Quick access, customization and a distinctive interface.
+            Everything Cabb UX is designed around:
+            quick access, customization and a distinctive interface.
         </p>
 
     </div>
@@ -1146,10 +993,6 @@ footer {
 </section>
 
 
-<!-- =========================
-     RELEASES
-========================= -->
-
 <section id="releases">
 
     <div class="section-title">
@@ -1251,10 +1094,6 @@ footer {
 </section>
 
 
-<!-- =========================
-     DOWNLOAD
-========================= -->
-
 <section
     id="download"
     class="download"
@@ -1300,10 +1139,6 @@ footer {
 </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
     <div>
@@ -1319,40 +1154,9 @@ footer {
 
 <script>
 
-/* =========================
-   YEAR
-========================= */
-
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
-
-/* =========================
-   PHONE CLOCK
-========================= */
-
-function updateClock() {
-
-    const now = new Date();
-
-    const hours =
-        String(now.getHours()).padStart(2, "0");
-
-    const minutes =
-        String(now.getMinutes()).padStart(2, "0");
-
-    document.getElementById("phoneTime").textContent =
-        hours + ":" + minutes;
-}
-
-updateClock();
-
-setInterval(updateClock, 1000);
-
-
-/* =========================
-   BOX-ONLY SCROLL ANIMATION
-========================= */
 
 const boxes =
     document.querySelectorAll(".reveal");
@@ -1377,12 +1181,6 @@ const observer =
                     );
 
                 } else {
-
-                    /*
-                     * The entire box moves.
-                     * Its text/content is NOT
-                     * separately animated.
-                     */
 
                     const rect =
                         box.getBoundingClientRect();
@@ -1412,6 +1210,7 @@ const observer =
                     box.classList.remove(
                         "visible"
                     );
+
                 }
 
             });
@@ -1421,6 +1220,7 @@ const observer =
         {
             threshold: 0.15
         }
+
     );
 
 

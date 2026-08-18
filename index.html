@@ -67,7 +67,7 @@ body::after {
     pointer-events: none;
 }
 
-/* NAVBAR */
+/* NAVIGATION */
 
 nav {
     position: fixed;
@@ -104,33 +104,19 @@ nav {
     width: 38px;
     height: 38px;
 
-    border-radius: 9px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: rgba(110, 200, 255, 0.12);
-    border: 1px solid rgba(110, 200, 255, 0.25);
+    border-radius: 9px;
 
     color: #6ec8ff;
+
+    background: rgba(110, 200, 255, 0.12);
+
+    border: 1px solid rgba(110, 200, 255, 0.25);
+
     font-weight: 700;
-}
-
-/*
-   When you upload the real logo later,
-   replace the .logo div with:
-
-   <img class="real-logo" src="images/logo.png">
-
-   and use the CSS below.
-*/
-
-.real-logo {
-    width: 38px;
-    height: 38px;
-    object-fit: contain;
-    border-radius: 9px;
 }
 
 .nav-links {
@@ -243,6 +229,8 @@ nav {
 }
 
 .button {
+    display: inline-block;
+
     padding: 14px 23px;
 
     border-radius: 8px;
@@ -252,6 +240,8 @@ nav {
     font-size: 14px;
 
     transition: 0.2s;
+
+    cursor: pointer;
 }
 
 .primary {
@@ -481,6 +471,11 @@ section {
     font-size: 13px;
 }
 
+.release-download {
+    margin-left: 20px;
+    white-space: nowrap;
+}
+
 /* SHOWCASE */
 
 .showcase {
@@ -516,7 +511,7 @@ section {
     overflow: hidden;
 }
 
-/* PHONE MOCKUP */
+/* PHONE */
 
 .phone {
     width: 205px;
@@ -623,6 +618,16 @@ section {
     line-height: 1.7;
 }
 
+.downloads {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
 /* FOOTER */
 
 footer {
@@ -675,11 +680,13 @@ footer {
     }
 
     .release {
-        flex-direction: column;
-
-        align-items: flex-start;
+        flex-wrap: wrap;
 
         gap: 12px;
+    }
+
+    .release-download {
+        margin-left: 0;
     }
 
     footer {
@@ -696,6 +703,8 @@ footer {
 </head>
 
 <body>
+
+<!-- NAVIGATION -->
 
 <nav>
 
@@ -731,12 +740,17 @@ footer {
 
     </ul>
 
-    <a href="#download" class="nav-button">
+    <a
+        href="#download"
+        class="nav-button"
+    >
         Download
     </a>
 
 </nav>
 
+
+<!-- HERO -->
 
 <header class="hero">
 
@@ -758,10 +772,11 @@ footer {
         <div class="buttons">
 
             <a
-                href="#download"
+                href="Cabb_ux_1.9.apk"
                 class="button primary"
+                download
             >
-                Download Cabb UX
+                Download 1.9
             </a>
 
             <a
@@ -777,6 +792,8 @@ footer {
 
 </header>
 
+
+<!-- FEATURES -->
 
 <section id="features">
 
@@ -907,6 +924,8 @@ footer {
 </section>
 
 
+<!-- RELEASES -->
+
 <section id="releases">
 
     <div class="section-title reveal">
@@ -924,6 +943,9 @@ footer {
 
     <div class="releases">
 
+
+        <!-- 1.9 -->
+
         <div class="release reveal">
 
             <div class="release-left">
@@ -939,11 +961,21 @@ footer {
             </div>
 
             <div class="release-date">
-                Current release
+                Cabb_ux_1.9.apk
             </div>
+
+            <a
+                href="Cabb_ux_1.9.apk"
+                class="button primary release-download"
+                download
+            >
+                Download
+            </a>
 
         </div>
 
+
+        <!-- 1.8 -->
 
         <div class="release reveal">
 
@@ -956,11 +988,21 @@ footer {
             </div>
 
             <div class="release-date">
-                Previous release
+                Cabb_ux_1.8.apk
             </div>
+
+            <a
+                href="Cabb_ux_1.8.apk"
+                class="button secondary release-download"
+                download
+            >
+                Download
+            </a>
 
         </div>
 
+
+        <!-- 1.7 -->
 
         <div class="release reveal">
 
@@ -973,8 +1015,16 @@ footer {
             </div>
 
             <div class="release-date">
-                Previous release
+                Cabb_ux_1.7.apk
             </div>
+
+            <a
+                href="Cabb_ux_1.7.apk"
+                class="button secondary release-download"
+                download
+            >
+                Download
+            </a>
 
         </div>
 
@@ -982,6 +1032,8 @@ footer {
 
 </section>
 
+
+<!-- SHOWCASE -->
 
 <section id="showcase">
 
@@ -1004,6 +1056,7 @@ footer {
 
 
     <div class="showcase">
+
 
         <div class="showcase-card reveal">
 
@@ -1045,24 +1098,30 @@ footer {
 
         <div class="showcase-card reveal">
 
-            <div style="
-                text-align:center;
-                padding:30px;
-            ">
+            <div
+                style="
+                    text-align:center;
+                    padding:30px;
+                "
+            >
 
-                <div style="
-                    font-size:48px;
-                    color:#6ec8ff;
-                    font-weight:500;
-                ">
+                <div
+                    style="
+                        font-size:48px;
+                        color:#6ec8ff;
+                        font-weight:500;
+                    "
+                >
                     Cabb UX
                 </div>
 
-                <p style="
-                    color:#89929b;
-                    margin-top:15px;
-                    line-height:1.7;
-                ">
+                <p
+                    style="
+                        color:#89929b;
+                        margin-top:15px;
+                        line-height:1.7;
+                    "
+                >
                     Simple.
                     Customizable.
                     Cabb UX.
@@ -1077,7 +1136,12 @@ footer {
 </section>
 
 
-<section id="download" class="download">
+<!-- DOWNLOAD -->
+
+<section
+    id="download"
+    class="download"
+>
 
     <div class="reveal">
 
@@ -1087,25 +1151,43 @@ footer {
 
         <p>
             Download the latest Cabb UX release
-            and experience the launcher yourself.
+            or choose an older version.
         </p>
 
-        <!--
-            REPLACE # WITH YOUR REAL APK LINK
-        -->
+        <div class="downloads">
 
-        <a
-            href="#"
-            class="button primary"
-            id="downloadButton"
-        >
-            Download 1.9.2.5
-        </a>
+            <a
+                href="Cabb_ux_1.9.apk"
+                class="button primary"
+                download
+            >
+                Download 1.9.2.5
+            </a>
+
+            <a
+                href="Cabb_ux_1.8.apk"
+                class="button secondary"
+                download
+            >
+                Download 1.8.0.0
+            </a>
+
+            <a
+                href="Cabb_ux_1.7.apk"
+                class="button secondary"
+                download
+            >
+                Download 1.7.0.0
+            </a>
+
+        </div>
 
     </div>
 
 </section>
 
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -1186,28 +1268,6 @@ elements.forEach(element => {
     observer.observe(element);
 
 });
-
-
-/* TEMPORARY DOWNLOAD */
-
-document
-    .getElementById("downloadButton")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (this.getAttribute("href") === "#") {
-
-                event.preventDefault();
-
-                alert(
-                    "The Cabb UX 1.9.2.5 APK download link will be added here."
-                );
-
-            }
-
-        }
-    );
 
 </script>
 

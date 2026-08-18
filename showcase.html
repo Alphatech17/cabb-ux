@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cabb UX — Showcase</title>
+
+<link rel="icon" type="image/png" href="cabbuxicon.png">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #070b10;
+    color: white;
+
+    overflow-x: hidden;
+}
+
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 20% 10%,
+            rgba(110, 200, 255, .16),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 90%,
+            rgba(110, 200, 255, .10),
+            transparent 35%
+        ),
+        #070b10;
+}
+
+
+/* NAV */
+
+nav {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background:
+        rgba(7, 11, 16, .78);
+
+    backdrop-filter: blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(110, 200, 255, .12);
+
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    font-size: 19px;
+
+    font-weight: 600;
+}
+
+.brand img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    border-radius: 9px;
+}
+
+.back {
+    color: #89929b;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.back:hover {
+    color: #6ec8ff;
+}
+
+
+/* HEADER */
+
+.header {
+    padding:
+        125px 20px 55px;
+
+    text-align: center;
+}
+
+.header h1 {
+    font-size:
+        clamp(48px, 7vw, 78px);
+
+    letter-spacing: -5px;
+
+    font-weight: 500;
+}
+
+.header h1 span {
+    color: #6ec8ff;
+}
+
+.header p {
+    max-width: 650px;
+
+    margin:
+        18px auto 0;
+
+    color: #89929b;
+
+    line-height: 1.7;
+}
+
+
+/* SHOWCASE */
+
+.showcase-area {
+    display: flex;
+
+    justify-content: center;
+
+    padding:
+        20px 20px 110px;
+}
+
+
+/* PHONE */
+
+.phone {
+    width: 390px;
+    height: 760px;
+
+    overflow: hidden;
+
+    border-radius: 34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101820,
+            #070b10
+        );
+
+    border:
+        5px solid #252d34;
+
+    box-shadow:
+        0 40px 110px
+        rgba(0, 0, 0, .65);
+}
+
+
+/* LAUNCHER */
+
+.launcher {
+    width: 100%;
+    height: 100%;
+
+    padding:
+        20px 18px 18px;
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =====================================================
+   TOP
+   WEATHER → CLOCK → MUSIC
+   HORIZONTAL NATIVE SCROLL
+   ===================================================== */
+
+.top-area {
+    width: 100%;
+    height: 180px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* THE ACTUAL HORIZONTAL SCROLLER */
+
+.top-scroller {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+
+    scroll-snap-type: x mandatory;
+}
+
+.top-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* EACH PAGE */
+
+.top-page {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    padding-top: 12px;
+
+    text-align: center;
+
+    scroll-snap-align: start;
+}
+
+
+/* LABEL */
+
+.page-label {
+    color: #6ec8ff;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+
+/* WEATHER */
+
+.weather-temp {
+    font-size: 52px;
+
+    line-height: 1;
+
+    font-weight: 300;
+}
+
+.weather-info {
+    margin-top: 8px;
+
+    color: #89929b;
+
+    font-size: 13px;
+}
+
+
+/* CLOCK */
+
+.clock-time {
+    font-size: 52px;
+
+    line-height: 1;
+
+    font-weight: 300;
+}
+
+.clock-date {
+    margin-top: 8px;
+
+    color: #89929b;
+
+    font-size: 13px;
+}
+
+
+/* MUSIC */
+
+.music-name {
+    font-size: 20px;
+
+    margin-bottom: 4px;
+}
+
+.music-artist {
+    color: #89929b;
+
+    font-size: 13px;
+}
+
+.music-controls {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 17px;
+
+    margin-top: 15px;
+}
+
+.music-controls button {
+    border: none;
+
+    background: transparent;
+
+    color: #89929b;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.music-controls button:hover {
+    color: #6ec8ff;
+}
+
+.music-controls .play {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: #6ec8ff;
+
+    color: #061019;
+
+    font-size: 13px;
+}
+
+
+/* TOP DOTS */
+
+.top-dots {
+    position: absolute;
+
+    bottom: 3px;
+
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    pointer-events: none;
+}
+
+.top-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+.top-dot.active {
+    background: #6ec8ff;
+}
+
+
+/* =====================================================
+   APPS
+   VERTICAL NATIVE SCROLL
+   ===================================================== */
+
+.apps-area {
+    flex: 1;
+
+    min-height: 0;
+
+    margin-top: 8px;
+
+    overflow: hidden;
+}
+
+
+/* ACTUAL VERTICAL SCROLLER */
+
+.apps-scroller {
+    width: 100%;
+    height: 100%;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    scrollbar-width: none;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+.apps-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* APP GRID */
+
+.apps {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    padding:
+        8px 3px 25px;
+}
+
+
+/* APP */
+
+.app {
+    width: 100%;
+
+    aspect-ratio: 1;
+
+    border-radius: 13px;
+
+    background:
+        rgba(110, 200, 255, .055);
+
+    border:
+        1px solid
+        rgba(110, 200, 255, .09);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    color: #89929b;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        transform .2s,
+        background .2s,
+        color .2s;
+}
+
+.app-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(110, 200, 255, .10);
+
+    color: #6ec8ff;
+
+    font-size: 17px;
+}
+
+.app:hover {
+    transform: translateY(-3px);
+
+    background:
+        rgba(110, 200, 255, .13);
+
+    color: white;
+}
+
+
+/* =====================================================
+   SEARCH
+   ===================================================== */
+
+.search-area {
+    flex-shrink: 0;
+
+    height: 58px;
+
+    margin-top: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0 16px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(110,200,255,.12);
+}
+
+.search-icon {
+    color: #6ec8ff;
+
+    font-size: 21px;
+}
+
+.search-input {
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+}
+
+.search-input::placeholder {
+    color: #66717a;
+}
+
+
+/* INFO */
+
+.info {
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding:
+        20px 7% 120px;
+}
+
+.info h2 {
+    font-size:
+        clamp(38px, 5vw, 58px);
+
+    letter-spacing: -3px;
+
+    font-weight: 500;
+
+    margin-bottom: 40px;
+}
+
+.parts {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.part {
+    padding: 25px;
+
+    min-height: 175px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(110,200,255,.045);
+
+    border:
+        1px solid
+        rgba(110,200,255,.10);
+}
+
+.part h3 {
+    color: #6ec8ff;
+
+    font-size: 17px;
+
+    margin-bottom: 10px;
+
+    font-weight: 500;
+}
+
+.part p {
+    color: #89929b;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .phone {
+        width: 100%;
+
+        max-width: 390px;
+
+        height: 720px;
+    }
+
+    .parts {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAV -->
+
+<nav>
+
+    <div class="brand">
+
+        <img
+            src="cabbuxicon.png"
+            alt="Cabb UX"
+        >
+
+        Cabb UX
+
+    </div>
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Back
+    </a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>
+        Cabb <span>UX</span>
+    </h1>
+
+    <p>
+        Interactive representation of the
+        Cabb UX launcher interface.
+    </p>
+
+</header>
+
+
+<!-- SHOWCASE -->
+
+<div class="showcase-area">
+
+<div class="phone">
+
+<div class="launcher">
+
+
+<!-- =====================================================
+     WEATHER / CLOCK / MUSIC
+     ===================================================== -->
+
+<div class="top-area">
+
+<div
+    class="top-scroller"
+    id="topScroller"
+>
+
+
+<!-- WEATHER -->
+
+<div class="top-page">
+
+    <div class="page-label">
+        Weather
+    </div>
+
+    <div class="weather-temp">
+        21°
+    </div>
+
+    <div class="weather-info">
+        Clear skies
+    </div>
+
+</div>
+
+
+<!-- CLOCK -->
+
+<div class="top-page">
+
+    <div class="page-label">
+        Clock
+    </div>
+
+    <div
+        class="clock-time"
+        id="clock"
+    >
+        00:00
+    </div>
+
+    <div
+        class="clock-date"
+        id="date"
+    >
+        Monday
+    </div>
+
+</div>
+
+
+<!-- MUSIC -->
+
+<div class="top-page">
+
+    <div class="page-label">
+        Music
+    </div>
+
+    <div class="music-name">
+        Cabb UX Demo
+    </div>
+
+    <div class="music-artist">
+        Cabb UX
+    </div>
+
+    <div class="music-controls">
+
+        <button>
+            ‹
+        </button>
+
+        <button
+            class="play"
+            id="play"
+        >
+            ▶
+        </button>
+
+        <button>
+            ›
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<div class="top-dots">
+
+    <div class="top-dot active"></div>
+
+    <div class="top-dot"></div>
+
+    <div class="top-dot"></div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     APPS
+     ===================================================== -->
+
+<div class="apps-area">
+
+<div
+    class="apps-scroller"
+    id="appsScroller"
+>
+
+<div class="apps">
+
+
+<div class="app">
+    <div class="app-icon">☎</div>
+    Phone
+</div>
+
+<div class="app">
+    <div class="app-icon">◉</div>
+    Camera
+</div>
+
+<div class="app">
+    <div class="app-icon">▣</div>
+    Gallery
+</div>
+
+<div class="app">
+    <div class="app-icon">⚙</div>
+    Settings
+</div>
+
+<div class="app">
+    <div class="app-icon">□</div>
+    Files
+</div>
+
+<div class="app">
+    <div class="app-icon">◎</div>
+    Browser
+</div>
+
+<div class="app">
+    <div class="app-icon">♪</div>
+    Music
+</div>
+
+<div class="app">
+    <div class="app-icon">◷</div>
+    Clock
+</div>
+
+<div class="app">
+    <div class="app-icon">✉</div>
+    Mail
+</div>
+
+<div class="app">
+    <div class="app-icon">▤</div>
+    Notes
+</div>
+
+<div class="app">
+    <div class="app-icon">▦</div>
+    Calendar
+</div>
+
+<div class="app">
+    <div class="app-icon">♫</div>
+    Audio
+</div>
+
+<div class="app">
+    <div class="app-icon">◆</div>
+    Maps
+</div>
+
+<div class="app">
+    <div class="app-icon">☁</div>
+    Weather
+</div>
+
+<div class="app">
+    <div class="app-icon">▧</div>
+    Downloads
+</div>
+
+<div class="app">
+    <div class="app-icon">●</div>
+    Camera 2
+</div>
+
+<div class="app">
+    <div class="app-icon">▱</div>
+    Documents
+</div>
+
+<div class="app">
+    <div class="app-icon">◇</div>
+    Gallery 2
+</div>
+
+<div class="app">
+    <div class="app-icon">▲</div>
+    Tools
+</div>
+
+<div class="app">
+    <div class="app-icon">+</div>
+    More
+</div>
+
+<div class="app">
+    <div class="app-icon">◆</div>
+    Maps 2
+</div>
+
+<div class="app">
+    <div class="app-icon">☁</div>
+    Weather 2
+</div>
+
+<div class="app">
+    <div class="app-icon">▤</div>
+    Notes 2
+</div>
+
+<div class="app">
+    <div class="app-icon">⚙</div>
+    Settings 2
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-area">
+
+    <div class="search-icon">
+        ⌕
+    </div>
+
+    <input
+        class="search-input"
+        id="search"
+        type="text"
+        placeholder="Search apps..."
+        autocomplete="off"
+    >
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- INFO -->
+
+<section class="info">
+
+<h2>
+    Cabb UX layout
+</h2>
+
+<div class="parts">
+
+<div class="part">
+
+<h3>
+    Weather · Clock · Music
+</h3>
+
+<p>
+    The top section scrolls horizontally
+    between Weather, Clock and Music.
+</p>
+
+</div>
+
+
+<div class="part">
+
+<h3>
+    Apps
+</h3>
+
+<p>
+    The middle section scrolls vertically
+    through the applications.
+</p>
+
+</div>
+
+
+<div class="part">
+
+<h3>
+    Search
+</h3>
+
+<p>
+    Search stays at the bottom and filters
+    the application list.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* CLOCK */
+
+function updateClock() {
+
+    const now = new Date();
+
+    document.getElementById("clock").textContent =
+        now.toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+    document.getElementById("date").textContent =
+        now.toLocaleDateString([], {
+            weekday: "long",
+            month: "short",
+            day: "numeric"
+        });
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+/* TOP DOTS */
+
+const topScroller =
+    document.getElementById("topScroller");
+
+const dots =
+    document.querySelectorAll(".top-dot");
+
+topScroller.addEventListener(
+    "scroll",
+    function() {
+
+        const page =
+            Math.round(
+                topScroller.scrollLeft /
+                topScroller.clientWidth
+            );
+
+        dots.forEach(
+            function(dot, index) {
+
+                dot.classList.toggle(
+                    "active",
+                    index === page
+                );
+
+            }
+        );
+
+    }
+);
+
+
+/* SEARCH */
+
+const search =
+    document.getElementById("search");
+
+const apps =
+    document.querySelectorAll(".app");
+
+search.addEventListener(
+    "input",
+    function() {
+
+        const value =
+            search.value
+                .toLowerCase()
+                .trim();
+
+        apps.forEach(
+            function(app) {
+
+                const name =
+                    app.textContent
+                        .toLowerCase();
+
+                app.style.display =
+                    name.includes(value)
+                        ? "flex"
+                        : "none";
+
+            }
+        );
+
+    }
+);
+
+
+/* MUSIC BUTTON */
+
+const play =
+    document.getElementById("play");
+
+let playing = false;
+
+play.addEventListener(
+    "click",
+    function(event) {
+
+        event.stopPropagation();
+
+        playing = !playing;
+
+        play.textContent =
+            playing
+                ? "Ⅱ"
+                : "▶";
+
+    }
+);
+
+</script>
+
+</body>
+</html>

@@ -11,10 +11,6 @@
 
 <style>
 
-/* =========================
-   BASE
-========================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -125,15 +121,22 @@ nav {
 
     border-radius: 9px;
 
-    color: #6ec8ff;
-
     background:
         rgba(110, 200, 255, 0.12);
 
     border:
         1px solid rgba(110, 200, 255, 0.25);
 
-    font-weight: 700;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 8px;
 }
 
 .nav-links {
@@ -145,7 +148,9 @@ nav {
 .nav-links a {
     color: #89929b;
     text-decoration: none;
+
     font-size: 14px;
+
     transition: 0.2s;
 }
 
@@ -169,7 +174,7 @@ nav {
 
 
 /* =========================
-   HERO
+   HERO / SHOWCASE
 ========================= */
 
 .hero {
@@ -179,69 +184,270 @@ nav {
     align-items: center;
     justify-content: center;
 
-    text-align: center;
-
-    padding: 120px 20px 80px;
+    padding:
+        120px 7% 80px;
 }
 
-.hero-content {
-    max-width: 900px;
+.hero-showcase {
+    width: 100%;
+    max-width: 1150px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    align-items: center;
+
+    gap: 80px;
 }
 
-.version {
-    display: inline-block;
 
-    padding: 7px 14px;
+/* =========================
+   HERO TEXT
+========================= */
 
-    margin-bottom: 25px;
-
-    border-radius: 100px;
-
-    color: #6ec8ff;
-
-    background:
-        rgba(110, 200, 255, 0.08);
-
-    border:
-        1px solid rgba(110, 200, 255, 0.2);
-
-    font-size: 13px;
+.hero-text {
+    max-width: 560px;
 }
 
-.hero h1 {
-    font-size: clamp(60px, 10vw, 115px);
+.hero-text h1 {
+    font-size:
+        clamp(60px, 9vw, 105px);
 
-    line-height: 0.95;
+    line-height: 0.9;
 
     letter-spacing: -6px;
 
     font-weight: 600;
 }
 
-.hero h1 span {
+.hero-text h1 span {
     color: #6ec8ff;
 
     text-shadow:
-        0 0 40px rgba(110, 200, 255, 0.2);
+        0 0 45px rgba(110, 200, 255, 0.25);
 }
 
-.hero p {
-    max-width: 620px;
-
-    margin: 30px auto;
+.hero-text p {
+    margin-top: 30px;
 
     color: #89929b;
 
     font-size: 18px;
 
     line-height: 1.7;
+
+    max-width: 520px;
 }
 
-.buttons {
+.hero-buttons {
     display: flex;
-    justify-content: center;
+
     gap: 12px;
+
+    margin-top: 30px;
+
     flex-wrap: wrap;
+}
+
+
+/* =========================
+   SHOWCASE CARD
+========================= */
+
+.hero-preview {
+    min-height: 560px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(110, 200, 255, 0.12),
+            rgba(110, 200, 255, 0.025)
+        );
+
+    border:
+        1px solid rgba(110, 200, 255, 0.16);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.35);
+
+    overflow: hidden;
+}
+
+.hero-preview::before {
+    content: "";
+
+    position: absolute;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(110, 200, 255, 0.14);
+
+    filter: blur(70px);
+}
+
+
+/* =========================
+   SHOWCASE PHONE
+========================= */
+
+.phone {
+    position: relative;
+
+    width: 245px;
+    height: 485px;
+
+    padding: 12px;
+
+    border-radius: 31px;
+
+    background: #05080b;
+
+    border:
+        5px solid #252d34;
+
+    box-shadow:
+        0 35px 80px rgba(0,0,0,0.65);
+
+    transform:
+        rotate(-4deg);
+
+    z-index: 2;
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+
+    padding: 25px 18px;
+
+    border-radius: 19px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(110,200,255,0.35),
+            transparent 35%
+        ),
+        linear-gradient(
+            160deg,
+            #101b26,
+            #070b10
+        );
+}
+
+.phone-logo {
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 25px;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    background:
+        rgba(110, 200, 255, 0.10);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.2);
+}
+
+.phone-logo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+}
+
+.phone-time {
+    font-size: 44px;
+
+    font-weight: 300;
+
+    letter-spacing: -2px;
+}
+
+.phone-date {
+    margin-top: 5px;
+
+    color: #75818b;
+
+    font-size: 11px;
+}
+
+.phone-line {
+    width: 100%;
+    height: 1px;
+
+    margin: 25px 0;
+
+    background:
+        rgba(110, 200, 255, 0.13);
+}
+
+.phone-label {
+    color: #6ec8ff;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 9px;
+}
+
+.phone-weather {
+    font-size: 25px;
+
+    font-weight: 300;
+}
+
+.tiles {
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 6px;
+}
+
+.tile {
+    height: 48px;
+
+    border-radius: 6px;
+
+    background:
+        rgba(110, 200, 255, 0.12);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.12);
+
+    backdrop-filter: blur(5px);
+}
+
+.tile.large {
+    grid-column: span 2;
 }
 
 
@@ -264,8 +470,6 @@ nav {
         transform 0.2s,
         background 0.2s,
         box-shadow 0.2s;
-
-    cursor: pointer;
 }
 
 .primary {
@@ -283,7 +487,7 @@ nav {
     transform: translateY(-2px);
 
     box-shadow:
-        0 0 45px rgba(110, 200, 255, 0.22);
+        0 0 45px rgba(110, 200, 255, 0.25);
 }
 
 .secondary {
@@ -307,7 +511,8 @@ nav {
 ========================= */
 
 section {
-    padding: 110px 7%;
+    padding:
+        110px 7%;
 }
 
 .section-title {
@@ -327,7 +532,8 @@ section {
 .section-title h2 {
     margin-top: 10px;
 
-    font-size: clamp(35px, 5vw, 60px);
+    font-size:
+        clamp(35px, 5vw, 60px);
 
     letter-spacing: -3px;
 
@@ -346,53 +552,50 @@ section {
 
 
 /* =========================
-   BOX SCROLL ANIMATION
+   BOX-ONLY ANIMATION
 ========================= */
-
-/*
-   ONLY the box itself moves.
-
-   No children are animated separately.
-*/
 
 .reveal {
     opacity: 0;
 
-    transform: translateX(-140px);
+    transform:
+        translateX(-140px);
 
     transition:
-        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s
+        cubic-bezier(0.22, 1, 0.36, 1),
+
         opacity 0.6s ease;
 
-    will-change: transform, opacity;
+    will-change:
+        transform,
+        opacity;
 }
-
-
-/* Alternate boxes start from opposite sides */
 
 .reveal:nth-child(even) {
-    transform: translateX(140px);
+    transform:
+        translateX(140px);
 }
-
-
-/* Visible */
 
 .reveal.visible {
     opacity: 1;
-    transform: translateX(0);
+
+    transform:
+        translateX(0);
 }
-
-
-/* When disappearing, ALL boxes split to both sides */
 
 .reveal.exit-left {
     opacity: 0;
-    transform: translateX(-180px);
+
+    transform:
+        translateX(-180px);
 }
 
 .reveal.exit-right {
     opacity: 0;
-    transform: translateX(180px);
+
+    transform:
+        translateX(180px);
 }
 
 
@@ -425,17 +628,6 @@ section {
         1px solid rgba(110, 200, 255, 0.11);
 
     border-radius: 11px;
-
-    transition:
-        transform 0.25s,
-        border-color 0.25s;
-}
-
-.feature:hover {
-    transform: translateY(-5px);
-
-    border-color:
-        rgba(110, 200, 255, 0.27);
 }
 
 .feature-icon {
@@ -443,6 +635,7 @@ section {
     height: 44px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -506,14 +699,6 @@ section {
         1px solid rgba(110, 200, 255, 0.10);
 }
 
-.release:hover {
-    background:
-        rgba(110, 200, 255, 0.07);
-
-    border-color:
-        rgba(110, 200, 255, 0.2);
-}
-
 .release-left {
     display: flex;
 
@@ -526,8 +711,6 @@ section {
     font-size: 24px;
 
     color: #6ec8ff;
-
-    font-weight: 500;
 }
 
 .latest {
@@ -560,123 +743,6 @@ section {
 
 
 /* =========================
-   SHOWCASE
-========================= */
-
-.showcase {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 18px;
-}
-
-.showcase-card {
-    min-height: 430px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(110, 200, 255, 0.07),
-            rgba(255,255,255,0.02)
-        );
-
-    border:
-        1px solid rgba(110, 200, 255, 0.10);
-
-    overflow: hidden;
-}
-
-
-/* =========================
-   PHONE
-========================= */
-
-.phone {
-    width: 205px;
-    height: 390px;
-
-    padding: 13px;
-
-    border-radius: 27px;
-
-    background: #05080b;
-
-    border:
-        5px solid #222a31;
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,0.6);
-
-    transform: rotate(-3deg);
-}
-
-.phone-screen {
-    height: 100%;
-
-    padding: 20px 13px;
-
-    border-radius: 14px;
-
-    background:
-        radial-gradient(
-            circle at 80% 15%,
-            rgba(110,200,255,0.35),
-            transparent 35%
-        ),
-        #0c131b;
-}
-
-.phone-time {
-    font-size: 38px;
-    font-weight: 300;
-}
-
-.phone-date {
-    margin-top: 5px;
-
-    color: #75818b;
-
-    font-size: 11px;
-}
-
-.tiles {
-    margin-top: 65px;
-
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 5px;
-}
-
-.tile {
-    height: 45px;
-
-    border-radius: 4px;
-
-    background:
-        rgba(110, 200, 255, 0.13);
-
-    border:
-        1px solid rgba(110, 200, 255, 0.10);
-}
-
-.tile.large {
-    grid-column: span 2;
-}
-
-
-/* =========================
    DOWNLOAD
 ========================= */
 
@@ -684,11 +750,13 @@ section {
     text-align: center;
 
     padding-top: 130px;
+
     padding-bottom: 150px;
 }
 
 .download h2 {
-    font-size: clamp(42px, 6vw, 72px);
+    font-size:
+        clamp(42px, 6vw, 72px);
 
     letter-spacing: -4px;
 
@@ -740,22 +808,39 @@ footer {
    MOBILE
 ========================= */
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
 
     .nav-links {
         display: none;
+    }
+
+    .hero-showcase {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .hero-text {
+        text-align: center;
+
+        margin: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-preview {
+        min-height: 500px;
     }
 
     .features {
         grid-template-columns: 1fr;
     }
 
-    .showcase {
-        grid-template-columns: 1fr;
-    }
-
     .release {
         flex-wrap: wrap;
+
         gap: 12px;
     }
 
@@ -765,11 +850,8 @@ footer {
 
     footer {
         flex-direction: column;
-        gap: 10px;
-    }
 
-    section {
-        padding: 80px 5%;
+        gap: 10px;
     }
 
 }
@@ -791,7 +873,10 @@ footer {
     <div class="brand">
 
         <div class="logo">
-            C
+            <img
+                src="cabbuxicon.png"
+                alt="Cabb UX"
+            >
         </div>
 
         Cabb UX
@@ -813,12 +898,6 @@ footer {
             </a>
         </li>
 
-        <li>
-            <a href="#showcase">
-                Showcase
-            </a>
-        </li>
-
     </ul>
 
 
@@ -833,42 +912,99 @@ footer {
 
 
 <!-- =========================
-     HERO
+     HERO SHOWCASE
 ========================= -->
 
 <header class="hero">
 
-    <div class="hero-content">
+    <div class="hero-showcase">
 
-        <div class="version">
-            Cabb UX 1.9.2.5
+
+        <div class="hero-text">
+
+            <h1>
+                Cabb <span>UX</span>
+            </h1>
+
+            <p>
+                A lightweight Android launcher built around
+                a clean, customizable and modern interface.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="Cabb_ux_1.9.apk"
+                    class="button primary"
+                    download
+                >
+                    Download 1.9.2.5
+                </a>
+
+                <a
+                    href="#features"
+                    class="button secondary"
+                >
+                    Explore
+                </a>
+
+            </div>
+
         </div>
 
-        <h1>
-            Cabb <span>UX</span>
-        </h1>
 
-        <p>
-            A lightweight Android launcher built around
-            a clean, customizable and modern interface.
-        </p>
+        <!-- ACTUAL SHOWCASE -->
 
-        <div class="buttons">
+        <div class="hero-preview reveal">
 
-            <a
-                href="Cabb_ux_1.9.apk"
-                class="button primary"
-                download
-            >
-                Download 1.9
-            </a>
+            <div class="phone">
 
-            <a
-                href="#features"
-                class="button secondary"
-            >
-                Explore
-            </a>
+                <div class="phone-screen">
+
+                    <div class="phone-logo">
+
+                        <img
+                            src="cabbuxicon.png"
+                            alt="Cabb UX"
+                        >
+
+                    </div>
+
+                    <div class="phone-time">
+                        18:00
+                    </div>
+
+                    <div class="phone-date">
+                        Cabb UX
+                    </div>
+
+                    <div class="phone-line"></div>
+
+                    <div class="phone-label">
+                        Weather
+                    </div>
+
+                    <div class="phone-weather">
+                        21°
+                    </div>
+
+                    <div class="tiles">
+
+                        <div class="tile large"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -894,8 +1030,7 @@ footer {
         </h2>
 
         <p>
-            Everything Cabb UX is designed around:
-            quick access, customization and a distinctive interface.
+            Quick access, customization and a distinctive interface.
         </p>
 
     </div>
@@ -1117,105 +1252,6 @@ footer {
 
 
 <!-- =========================
-     SHOWCASE
-========================= -->
-
-<section id="showcase">
-
-    <div class="section-title">
-
-        <small>
-            Interface
-        </small>
-
-        <h2>
-            Cabb UX.
-        </h2>
-
-        <p>
-            A clean interface with translucent surfaces
-            and light-blue accents.
-        </p>
-
-    </div>
-
-
-    <div class="showcase">
-
-
-        <div class="showcase-card reveal">
-
-            <div class="phone">
-
-                <div class="phone-screen">
-
-                    <div
-                        class="phone-time"
-                        id="phoneTime"
-                    >
-                        18:00
-                    </div>
-
-                    <div class="phone-date">
-                        Cabb UX
-                    </div>
-
-                    <div class="tiles">
-
-                        <div class="tile large"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                        <div class="tile"></div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="showcase-card reveal">
-
-            <div style="
-                text-align:center;
-                padding:30px;
-            ">
-
-                <div style="
-                    font-size:48px;
-                    color:#6ec8ff;
-                    font-weight:500;
-                ">
-                    Cabb UX
-                </div>
-
-                <p style="
-                    color:#89929b;
-                    margin-top:15px;
-                    line-height:1.7;
-                ">
-                    Simple.
-                    Customizable.
-                    Cabb UX.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
      DOWNLOAD
 ========================= -->
 
@@ -1224,44 +1260,40 @@ footer {
     class="download"
 >
 
-    <div>
+    <h2>
+        Get Cabb UX.
+    </h2>
 
-        <h2>
-            Get Cabb UX.
-        </h2>
+    <p>
+        Download the latest Cabb UX release
+        or choose an older version.
+    </p>
 
-        <p>
-            Download the latest Cabb UX release
-            or choose an older version.
-        </p>
+    <div class="downloads">
 
-        <div class="downloads">
+        <a
+            href="Cabb_ux_1.9.apk"
+            class="button primary"
+            download
+        >
+            Download 1.9.2.5
+        </a>
 
-            <a
-                href="Cabb_ux_1.9.apk"
-                class="button primary"
-                download
-            >
-                Download 1.9.2.5
-            </a>
+        <a
+            href="Cabb_ux_1.8.apk"
+            class="button secondary"
+            download
+        >
+            Download 1.8.0.0
+        </a>
 
-            <a
-                href="Cabb_ux_1.8.apk"
-                class="button secondary"
-                download
-            >
-                Download 1.8.0.0
-            </a>
-
-            <a
-                href="Cabb_ux_1.7.apk"
-                class="button secondary"
-                download
-            >
-                Download 1.7.0.0
-            </a>
-
-        </div>
+        <a
+            href="Cabb_ux_1.7.apk"
+            class="button secondary"
+            download
+        >
+            Download 1.7.0.0
+        </a>
 
     </div>
 
@@ -1279,7 +1311,7 @@ footer {
     </div>
 
     <div>
-        Cabb UX 1.9.2.5
+        Cabb UX
     </div>
 
 </footer>
@@ -1325,7 +1357,6 @@ setInterval(updateClock, 1000);
 const boxes =
     document.querySelectorAll(".reveal");
 
-
 const observer =
     new IntersectionObserver(
 
@@ -1336,7 +1367,6 @@ const observer =
                 const box =
                     entry.target;
 
-
                 if (entry.isIntersecting) {
 
                     box.classList.add("visible");
@@ -1346,49 +1376,42 @@ const observer =
                         "exit-right"
                     );
 
-                }
-
-                else {
+                } else {
 
                     /*
-                     * Alternate the exit direction.
-                     * The BOX itself moves.
+                     * The entire box moves.
+                     * Its text/content is NOT
+                     * separately animated.
                      */
 
-                    if (
-                        box.dataset.exit === "right"
-                    ) {
+                    const rect =
+                        box.getBoundingClientRect();
 
-                        box.classList.remove(
-                            "exit-right"
-                        );
+                    if (rect.top < 0) {
 
                         box.classList.add(
                             "exit-left"
                         );
 
-                        box.dataset.exit = "left";
-
-                    }
-
-                    else {
-
                         box.classList.remove(
-                            "exit-left"
+                            "exit-right"
                         );
+
+                    } else {
 
                         box.classList.add(
                             "exit-right"
                         );
 
-                        box.dataset.exit = "right";
+                        box.classList.remove(
+                            "exit-left"
+                        );
 
                     }
 
                     box.classList.remove(
                         "visible"
                     );
-
                 }
 
             });
@@ -1398,16 +1421,11 @@ const observer =
         {
             threshold: 0.15
         }
-
     );
 
 
 boxes.forEach(box => {
-
-    box.dataset.exit = "left";
-
     observer.observe(box);
-
 });
 
 </script>

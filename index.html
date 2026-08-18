@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cabb UX</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #070b10;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(110, 200, 255, 0.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(110, 200, 255, 0.12),
+            transparent 35%
+        ),
+        #070b10;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+/* NAVBAR */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: rgba(7, 11, 16, 0.68);
+    backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(110, 200, 255, 0.12);
+
+    z-index: 100;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.logo {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(110, 200, 255, 0.12);
+    border: 1px solid rgba(110, 200, 255, 0.25);
+
+    color: #6ec8ff;
+    font-weight: 700;
+}
+
+/*
+   When you upload the real logo later,
+   replace the .logo div with:
+
+   <img class="real-logo" src="images/logo.png">
+
+   and use the CSS below.
+*/
+
+.real-logo {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 9px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #89929b;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #6ec8ff;
+}
+
+.nav-button {
+    padding: 10px 17px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    color: #061019 !important;
+
+    background: #6ec8ff;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 0 25px rgba(110, 200, 255, 0.12);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 120px 20px 80px;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.version {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    margin-bottom: 25px;
+
+    border-radius: 100px;
+
+    color: #6ec8ff;
+
+    background: rgba(110, 200, 255, 0.08);
+
+    border: 1px solid rgba(110, 200, 255, 0.2);
+
+    font-size: 13px;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 115px);
+
+    line-height: 0.95;
+
+    letter-spacing: -6px;
+
+    font-weight: 600;
+}
+
+.hero h1 span {
+    color: #6ec8ff;
+
+    text-shadow:
+        0 0 40px rgba(110, 200, 255, 0.2);
+}
+
+.hero p {
+    max-width: 620px;
+
+    margin: 30px auto;
+
+    color: #89929b;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 14px 23px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.primary {
+    background: #6ec8ff;
+
+    color: #061019;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 0 35px rgba(110, 200, 255, 0.12);
+}
+
+.primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 45px rgba(110, 200, 255, 0.22);
+}
+
+.secondary {
+    color: #c9d0d6;
+
+    background: rgba(110, 200, 255, 0.05);
+
+    border: 1px solid rgba(110, 200, 255, 0.16);
+}
+
+.secondary:hover {
+    background: rgba(110, 200, 255, 0.10);
+}
+
+/* SECTIONS */
+
+section {
+    padding: 110px 7%;
+}
+
+.section-title {
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: #6ec8ff;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    font-size: 11px;
+}
+
+.section-title h2 {
+    margin-top: 10px;
+
+    font-size: clamp(35px, 5vw, 60px);
+
+    letter-spacing: -3px;
+
+    font-weight: 500;
+}
+
+.section-title p {
+    margin-top: 15px;
+
+    max-width: 600px;
+
+    color: #89929b;
+
+    line-height: 1.7;
+}
+
+/* FEATURES */
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+.feature {
+    min-height: 220px;
+
+    padding: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(110, 200, 255, 0.08),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid rgba(110, 200, 255, 0.11);
+
+    border-radius: 11px;
+
+    transition: 0.25s;
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(110, 200, 255, 0.27);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(110, 200, 255, 0.12),
+            rgba(255,255,255,0.035)
+        );
+}
+
+.feature-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    border-radius: 9px;
+
+    color: #6ec8ff;
+
+    background:
+        rgba(110, 200, 255, 0.09);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.16);
+}
+
+.feature h3 {
+    font-size: 19px;
+
+    font-weight: 500;
+
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #89929b;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+}
+
+/* RELEASES */
+
+.releases {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.release {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 25px 28px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(110, 200, 255, 0.035);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.10);
+
+    transition: 0.2s;
+}
+
+.release:hover {
+    background:
+        rgba(110, 200, 255, 0.07);
+
+    border-color:
+        rgba(110, 200, 255, 0.2);
+}
+
+.release-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.release-version {
+    font-size: 24px;
+
+    color: #6ec8ff;
+
+    font-weight: 500;
+}
+
+.latest {
+    padding: 5px 9px;
+
+    border-radius: 100px;
+
+    font-size: 10px;
+
+    color: #6ec8ff;
+
+    background:
+        rgba(110, 200, 255, 0.10);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.18);
+}
+
+.release-date {
+    color: #707981;
+
+    font-size: 13px;
+}
+
+/* SHOWCASE */
+
+.showcase {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+}
+
+.showcase-card {
+    min-height: 430px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(110, 200, 255, 0.07),
+            rgba(255,255,255,0.02)
+        );
+
+    border:
+        1px solid rgba(110, 200, 255, 0.10);
+
+    overflow: hidden;
+}
+
+/* PHONE MOCKUP */
+
+.phone {
+    width: 205px;
+    height: 390px;
+
+    padding: 13px;
+
+    border-radius: 27px;
+
+    background: #05080b;
+
+    border:
+        5px solid #222a31;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.6);
+
+    transform:
+        rotate(-3deg);
+}
+
+.phone-screen {
+    height: 100%;
+
+    padding: 20px 13px;
+
+    border-radius: 14px;
+
+    background:
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(110,200,255,0.35),
+            transparent 35%
+        ),
+        #0c131b;
+}
+
+.phone-time {
+    font-size: 38px;
+
+    font-weight: 300;
+}
+
+.phone-date {
+    margin-top: 5px;
+
+    color: #75818b;
+
+    font-size: 11px;
+}
+
+.tiles {
+    margin-top: 65px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 5px;
+}
+
+.tile {
+    height: 45px;
+
+    border-radius: 4px;
+
+    background:
+        rgba(110, 200, 255, 0.13);
+
+    border:
+        1px solid rgba(110, 200, 255, 0.10);
+}
+
+.tile.large {
+    grid-column: span 2;
+}
+
+/* DOWNLOAD */
+
+.download {
+    text-align: center;
+
+    padding-top: 130px;
+
+    padding-bottom: 150px;
+}
+
+.download h2 {
+    font-size: clamp(42px, 6vw, 72px);
+
+    letter-spacing: -4px;
+
+    font-weight: 500;
+}
+
+.download p {
+    max-width: 550px;
+
+    margin: 20px auto 30px;
+
+    color: #89929b;
+
+    line-height: 1.7;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #5e6870;
+
+    font-size: 12px;
+
+    border-top:
+        1px solid rgba(110, 200, 255, 0.09);
+}
+
+/* ANIMATION */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .release {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+
+    footer {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    section {
+        padding: 80px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="brand">
+
+        <div class="logo">
+            C
+        </div>
+
+        Cabb UX
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#features">
+                Features
+            </a>
+        </li>
+
+        <li>
+            <a href="#releases">
+                Releases
+            </a>
+        </li>
+
+        <li>
+            <a href="#showcase">
+                Showcase
+            </a>
+        </li>
+
+    </ul>
+
+    <a href="#download" class="nav-button">
+        Download
+    </a>
+
+</nav>
+
+
+<header class="hero">
+
+    <div class="hero-content reveal">
+
+        <div class="version">
+            Cabb UX 1.9.2.5
+        </div>
+
+        <h1>
+            Cabb <span>UX</span>
+        </h1>
+
+        <p>
+            A lightweight Android launcher built around
+            a clean, customizable and modern interface.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#download"
+                class="button primary"
+            >
+                Download Cabb UX
+            </a>
+
+            <a
+                href="#features"
+                class="button secondary"
+            >
+                Explore
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<section id="features">
+
+    <div class="section-title reveal">
+
+        <small>
+            Features
+        </small>
+
+        <h2>
+            Built for Cabb UX.
+        </h2>
+
+        <p>
+            Everything Cabb UX is designed around:
+            quick access, customization and a distinctive interface.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                ▦
+            </div>
+
+            <h3>
+                Homescreen-less UI
+            </h3>
+
+            <p>
+                A different approach to the traditional
+                Android launcher experience.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                ♪
+            </div>
+
+            <h3>
+                Music controls
+            </h3>
+
+            <p>
+                Control your music directly from the launcher.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                ☁
+            </div>
+
+            <h3>
+                Weather
+            </h3>
+
+            <p>
+                Weather information directly inside the launcher.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                ⌕
+            </div>
+
+            <h3>
+                App search
+            </h3>
+
+            <p>
+                Quickly find applications installed on your device.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                ●
+            </div>
+
+            <h3>
+                Accent colors
+            </h3>
+
+            <p>
+                Customize the interface with your preferred accent.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <div class="feature-icon">
+                □
+            </div>
+
+            <h3>
+                Folders
+            </h3>
+
+            <p>
+                Keep applications organized without cluttering the UI.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="releases">
+
+    <div class="section-title reveal">
+
+        <small>
+            Version history
+        </small>
+
+        <h2>
+            Releases.
+        </h2>
+
+    </div>
+
+
+    <div class="releases">
+
+        <div class="release reveal">
+
+            <div class="release-left">
+
+                <div class="release-version">
+                    1.9.2.5
+                </div>
+
+                <div class="latest">
+                    LATEST
+                </div>
+
+            </div>
+
+            <div class="release-date">
+                Current release
+            </div>
+
+        </div>
+
+
+        <div class="release reveal">
+
+            <div class="release-left">
+
+                <div class="release-version">
+                    1.8.0.0
+                </div>
+
+            </div>
+
+            <div class="release-date">
+                Previous release
+            </div>
+
+        </div>
+
+
+        <div class="release reveal">
+
+            <div class="release-left">
+
+                <div class="release-version">
+                    1.7.0.0
+                </div>
+
+            </div>
+
+            <div class="release-date">
+                Previous release
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="showcase">
+
+    <div class="section-title reveal">
+
+        <small>
+            Interface
+        </small>
+
+        <h2>
+            Cabb UX.
+        </h2>
+
+        <p>
+            A clean interface with translucent surfaces
+            and light-blue accents.
+        </p>
+
+    </div>
+
+
+    <div class="showcase">
+
+        <div class="showcase-card reveal">
+
+            <div class="phone">
+
+                <div class="phone-screen">
+
+                    <div
+                        class="phone-time"
+                        id="phoneTime"
+                    >
+                        18:00
+                    </div>
+
+                    <div class="phone-date">
+                        Cabb UX
+                    </div>
+
+                    <div class="tiles">
+
+                        <div class="tile large"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                        <div class="tile"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="showcase-card reveal">
+
+            <div style="
+                text-align:center;
+                padding:30px;
+            ">
+
+                <div style="
+                    font-size:48px;
+                    color:#6ec8ff;
+                    font-weight:500;
+                ">
+                    Cabb UX
+                </div>
+
+                <p style="
+                    color:#89929b;
+                    margin-top:15px;
+                    line-height:1.7;
+                ">
+                    Simple.
+                    Customizable.
+                    Cabb UX.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="download" class="download">
+
+    <div class="reveal">
+
+        <h2>
+            Get Cabb UX.
+        </h2>
+
+        <p>
+            Download the latest Cabb UX release
+            and experience the launcher yourself.
+        </p>
+
+        <!--
+            REPLACE # WITH YOUR REAL APK LINK
+        -->
+
+        <a
+            href="#"
+            class="button primary"
+            id="downloadButton"
+        >
+            Download 1.9.2.5
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <div>
+        © <span id="year"></span> Cabb UX
+    </div>
+
+    <div>
+        Cabb UX 1.9.2.5
+    </div>
+
+</footer>
+
+
+<script>
+
+/* YEAR */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* PHONE CLOCK */
+
+function updateClock() {
+
+    const now = new Date();
+
+    const hours =
+        String(now.getHours()).padStart(2, "0");
+
+    const minutes =
+        String(now.getMinutes()).padStart(2, "0");
+
+    document.getElementById("phoneTime")
+        .textContent =
+        hours + ":" + minutes;
+}
+
+updateClock();
+
+setInterval(updateClock, 1000);
+
+
+/* SCROLL ANIMATIONS */
+
+const elements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+elements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* TEMPORARY DOWNLOAD */
+
+document
+    .getElementById("downloadButton")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (this.getAttribute("href") === "#") {
+
+                event.preventDefault();
+
+                alert(
+                    "The Cabb UX 1.9.2.5 APK download link will be added here."
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

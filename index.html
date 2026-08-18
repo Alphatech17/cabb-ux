@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Cabb UX</title>
 
+<link rel="icon" type="image/png" href="cabbuxicon.png">
+
 <style>
+
+/* =========================
+   BASE
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +32,10 @@ body {
     overflow-x: hidden;
 }
 
-/* BACKGROUND */
+
+/* =========================
+   BACKGROUND
+========================= */
 
 body::before {
     content: "";
@@ -67,7 +78,10 @@ body::after {
     pointer-events: none;
 }
 
-/* NAVIGATION */
+
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     position: fixed;
@@ -86,7 +100,8 @@ nav {
     background: rgba(7, 11, 16, 0.68);
     backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid rgba(110, 200, 255, 0.12);
+    border-bottom:
+        1px solid rgba(110, 200, 255, 0.12);
 
     z-index: 100;
 }
@@ -112,9 +127,11 @@ nav {
 
     color: #6ec8ff;
 
-    background: rgba(110, 200, 255, 0.12);
+    background:
+        rgba(110, 200, 255, 0.12);
 
-    border: 1px solid rgba(110, 200, 255, 0.25);
+    border:
+        1px solid rgba(110, 200, 255, 0.25);
 
     font-weight: 700;
 }
@@ -148,12 +165,12 @@ nav {
     background: #6ec8ff;
 
     font-weight: 600;
-
-    box-shadow:
-        0 0 25px rgba(110, 200, 255, 0.12);
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
     min-height: 100vh;
@@ -182,9 +199,11 @@ nav {
 
     color: #6ec8ff;
 
-    background: rgba(110, 200, 255, 0.08);
+    background:
+        rgba(110, 200, 255, 0.08);
 
-    border: 1px solid rgba(110, 200, 255, 0.2);
+    border:
+        1px solid rgba(110, 200, 255, 0.2);
 
     font-size: 13px;
 }
@@ -220,13 +239,15 @@ nav {
 
 .buttons {
     display: flex;
-
     justify-content: center;
-
     gap: 12px;
-
     flex-wrap: wrap;
 }
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 .button {
     display: inline-block;
@@ -239,7 +260,10 @@ nav {
 
     font-size: 14px;
 
-    transition: 0.2s;
+    transition:
+        transform 0.2s,
+        background 0.2s,
+        box-shadow 0.2s;
 
     cursor: pointer;
 }
@@ -265,16 +289,22 @@ nav {
 .secondary {
     color: #c9d0d6;
 
-    background: rgba(110, 200, 255, 0.05);
+    background:
+        rgba(110, 200, 255, 0.05);
 
-    border: 1px solid rgba(110, 200, 255, 0.16);
+    border:
+        1px solid rgba(110, 200, 255, 0.16);
 }
 
 .secondary:hover {
-    background: rgba(110, 200, 255, 0.10);
+    background:
+        rgba(110, 200, 255, 0.10);
 }
 
-/* SECTIONS */
+
+/* =========================
+   SECTIONS
+========================= */
 
 section {
     padding: 110px 7%;
@@ -314,7 +344,61 @@ section {
     line-height: 1.7;
 }
 
-/* FEATURES */
+
+/* =========================
+   BOX SCROLL ANIMATION
+========================= */
+
+/*
+   ONLY the box itself moves.
+
+   No children are animated separately.
+*/
+
+.reveal {
+    opacity: 0;
+
+    transform: translateX(-140px);
+
+    transition:
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.6s ease;
+
+    will-change: transform, opacity;
+}
+
+
+/* Alternate boxes start from opposite sides */
+
+.reveal:nth-child(even) {
+    transform: translateX(140px);
+}
+
+
+/* Visible */
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* When disappearing, ALL boxes split to both sides */
+
+.reveal.exit-left {
+    opacity: 0;
+    transform: translateX(-180px);
+}
+
+.reveal.exit-right {
+    opacity: 0;
+    transform: translateX(180px);
+}
+
+
+/* =========================
+   FEATURES
+========================= */
 
 .features {
     display: grid;
@@ -337,11 +421,14 @@ section {
             rgba(255,255,255,0.025)
         );
 
-    border: 1px solid rgba(110, 200, 255, 0.11);
+    border:
+        1px solid rgba(110, 200, 255, 0.11);
 
     border-radius: 11px;
 
-    transition: 0.25s;
+    transition:
+        transform 0.25s,
+        border-color 0.25s;
 }
 
 .feature:hover {
@@ -349,13 +436,6 @@ section {
 
     border-color:
         rgba(110, 200, 255, 0.27);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(110, 200, 255, 0.12),
-            rgba(255,255,255,0.035)
-        );
 }
 
 .feature-icon {
@@ -395,7 +475,10 @@ section {
     line-height: 1.65;
 }
 
-/* RELEASES */
+
+/* =========================
+   RELEASES
+========================= */
 
 .releases {
     display: flex;
@@ -421,8 +504,6 @@ section {
 
     border:
         1px solid rgba(110, 200, 255, 0.10);
-
-    transition: 0.2s;
 }
 
 .release:hover {
@@ -473,10 +554,14 @@ section {
 
 .release-download {
     margin-left: 20px;
+
     white-space: nowrap;
 }
 
-/* SHOWCASE */
+
+/* =========================
+   SHOWCASE
+========================= */
 
 .showcase {
     display: grid;
@@ -493,7 +578,6 @@ section {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 13px;
@@ -511,7 +595,10 @@ section {
     overflow: hidden;
 }
 
-/* PHONE */
+
+/* =========================
+   PHONE
+========================= */
 
 .phone {
     width: 205px;
@@ -529,8 +616,7 @@ section {
     box-shadow:
         0 30px 80px rgba(0,0,0,0.6);
 
-    transform:
-        rotate(-3deg);
+    transform: rotate(-3deg);
 }
 
 .phone-screen {
@@ -551,7 +637,6 @@ section {
 
 .phone-time {
     font-size: 38px;
-
     font-weight: 300;
 }
 
@@ -590,13 +675,15 @@ section {
     grid-column: span 2;
 }
 
-/* DOWNLOAD */
+
+/* =========================
+   DOWNLOAD
+========================= */
 
 .download {
     text-align: center;
 
     padding-top: 130px;
-
     padding-bottom: 150px;
 }
 
@@ -628,7 +715,10 @@ section {
     flex-wrap: wrap;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     padding: 30px 7%;
@@ -645,25 +735,10 @@ footer {
         1px solid rgba(110, 200, 255, 0.09);
 }
 
-/* ANIMATION */
 
-.reveal {
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-
-    transform: translateY(0);
-}
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 800px) {
 
@@ -681,7 +756,6 @@ footer {
 
     .release {
         flex-wrap: wrap;
-
         gap: 12px;
     }
 
@@ -691,20 +765,26 @@ footer {
 
     footer {
         flex-direction: column;
-
         gap: 10px;
     }
 
     section {
         padding: 80px 5%;
     }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVIGATION -->
+
+<!-- =========================
+     NAVIGATION
+========================= -->
 
 <nav>
 
@@ -717,6 +797,7 @@ footer {
         Cabb UX
 
     </div>
+
 
     <ul class="nav-links">
 
@@ -740,6 +821,7 @@ footer {
 
     </ul>
 
+
     <a
         href="#download"
         class="nav-button"
@@ -750,11 +832,13 @@ footer {
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
 <header class="hero">
 
-    <div class="hero-content reveal">
+    <div class="hero-content">
 
         <div class="version">
             Cabb UX 1.9.2.5
@@ -793,11 +877,13 @@ footer {
 </header>
 
 
-<!-- FEATURES -->
+<!-- =========================
+     FEATURES
+========================= -->
 
 <section id="features">
 
-    <div class="section-title reveal">
+    <div class="section-title">
 
         <small>
             Features
@@ -816,6 +902,7 @@ footer {
 
 
     <div class="features">
+
 
         <div class="feature reveal">
 
@@ -924,11 +1011,13 @@ footer {
 </section>
 
 
-<!-- RELEASES -->
+<!-- =========================
+     RELEASES
+========================= -->
 
 <section id="releases">
 
-    <div class="section-title reveal">
+    <div class="section-title">
 
         <small>
             Version history
@@ -943,8 +1032,6 @@ footer {
 
     <div class="releases">
 
-
-        <!-- 1.9 -->
 
         <div class="release reveal">
 
@@ -975,8 +1062,6 @@ footer {
         </div>
 
 
-        <!-- 1.8 -->
-
         <div class="release reveal">
 
             <div class="release-left">
@@ -1001,8 +1086,6 @@ footer {
 
         </div>
 
-
-        <!-- 1.7 -->
 
         <div class="release reveal">
 
@@ -1033,11 +1116,13 @@ footer {
 </section>
 
 
-<!-- SHOWCASE -->
+<!-- =========================
+     SHOWCASE
+========================= -->
 
 <section id="showcase">
 
-    <div class="section-title reveal">
+    <div class="section-title">
 
         <small>
             Interface
@@ -1098,30 +1183,24 @@ footer {
 
         <div class="showcase-card reveal">
 
-            <div
-                style="
-                    text-align:center;
-                    padding:30px;
-                "
-            >
+            <div style="
+                text-align:center;
+                padding:30px;
+            ">
 
-                <div
-                    style="
-                        font-size:48px;
-                        color:#6ec8ff;
-                        font-weight:500;
-                    "
-                >
+                <div style="
+                    font-size:48px;
+                    color:#6ec8ff;
+                    font-weight:500;
+                ">
                     Cabb UX
                 </div>
 
-                <p
-                    style="
-                        color:#89929b;
-                        margin-top:15px;
-                        line-height:1.7;
-                    "
-                >
+                <p style="
+                    color:#89929b;
+                    margin-top:15px;
+                    line-height:1.7;
+                ">
                     Simple.
                     Customizable.
                     Cabb UX.
@@ -1136,14 +1215,16 @@ footer {
 </section>
 
 
-<!-- DOWNLOAD -->
+<!-- =========================
+     DOWNLOAD
+========================= -->
 
 <section
     id="download"
     class="download"
 >
 
-    <div class="reveal">
+    <div>
 
         <h2>
             Get Cabb UX.
@@ -1187,7 +1268,9 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -1204,13 +1287,17 @@ footer {
 
 <script>
 
-/* YEAR */
+/* =========================
+   YEAR
+========================= */
 
 document.getElementById("year").textContent =
     new Date().getFullYear();
 
 
-/* PHONE CLOCK */
+/* =========================
+   PHONE CLOCK
+========================= */
 
 function updateClock() {
 
@@ -1222,8 +1309,7 @@ function updateClock() {
     const minutes =
         String(now.getMinutes()).padStart(2, "0");
 
-    document.getElementById("phoneTime")
-        .textContent =
+    document.getElementById("phoneTime").textContent =
         hours + ":" + minutes;
 }
 
@@ -1232,40 +1318,95 @@ updateClock();
 setInterval(updateClock, 1000);
 
 
-/* SCROLL ANIMATIONS */
+/* =========================
+   BOX-ONLY SCROLL ANIMATION
+========================= */
 
-const elements =
+const boxes =
     document.querySelectorAll(".reveal");
+
 
 const observer =
     new IntersectionObserver(
+
         entries => {
 
             entries.forEach(entry => {
 
+                const box =
+                    entry.target;
+
+
                 if (entry.isIntersecting) {
 
-                    entry.target
-                        .classList
-                        .add("visible");
+                    box.classList.add("visible");
 
-                    observer.unobserve(
-                        entry.target
+                    box.classList.remove(
+                        "exit-left",
+                        "exit-right"
                     );
+
+                }
+
+                else {
+
+                    /*
+                     * Alternate the exit direction.
+                     * The BOX itself moves.
+                     */
+
+                    if (
+                        box.dataset.exit === "right"
+                    ) {
+
+                        box.classList.remove(
+                            "exit-right"
+                        );
+
+                        box.classList.add(
+                            "exit-left"
+                        );
+
+                        box.dataset.exit = "left";
+
+                    }
+
+                    else {
+
+                        box.classList.remove(
+                            "exit-left"
+                        );
+
+                        box.classList.add(
+                            "exit-right"
+                        );
+
+                        box.dataset.exit = "right";
+
+                    }
+
+                    box.classList.remove(
+                        "visible"
+                    );
+
                 }
 
             });
 
         },
+
         {
-            threshold: 0.12
+            threshold: 0.15
         }
+
     );
 
 
-elements.forEach(element => {
+boxes.forEach(box => {
 
-    observer.observe(element);
+    box.dataset.exit = "left";
+
+    observer.observe(box);
 
 });
 
